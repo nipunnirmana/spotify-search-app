@@ -1,5 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Fragment } from "react";
+import "./bootstrap.min.css";
+import "./App.css";
 import axios from "axios";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from "react-bootstrap/Button";
 
 function App() {
   const [authCode, setAuthCode] = useState(
@@ -9,7 +15,7 @@ function App() {
   useEffect(() => {
     const urlSearchData = window.location.hash;
     const hasRequestCode = urlSearchData.search("access_token=");
-    if (hasRequestCode) {
+    if (hasRequestCode >= 0) {
       const requestCode = urlSearchData.split("access_token=")[1];
       setAuthCode(requestCode);
       localStorage.setItem("authCode", requestCode);
@@ -17,6 +23,10 @@ function App() {
   }, []);
 
   const handleClick = () => {
+    redirectToAuthPage();
+  };
+
+  const redirectToAuthPage = () => {
     const authUrl = "https://accounts.spotify.com/authorize";
     const cid = "9a5438691913462cabcbfbb68aafae95";
     const rtype = "token";
@@ -25,7 +35,7 @@ function App() {
   };
 
   const mainBlock = () => {
-    let block = <button onClick={handleClick}>Please Login</button>;
+    let block = <Button onClick={handleClick}>Please Login</Button>;
     if (authCode) {
       block = <div> Welcome back {name} </div>;
       const userData = axios
@@ -34,12 +44,24 @@ function App() {
         })
         .then(response => {
           setName(response.data.display_name);
+        })
+        .catch(err => {
+          localStorage.removeItem("authCode");
+          redirectToAuthPage();
         });
     }
     return block;
   };
 
-  return <div className="App">{mainBlock()}</div>;
+  return (
+    <Fragment>
+      <Container fluid>
+        <Row>
+          <Col lg={12}>{mainBlock()}</Col>
+        </Row>
+      </Container>
+    </Fragment>
+  );
 }
 
 export default App;
