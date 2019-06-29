@@ -1,3 +1,31 @@
 body {
   background: #1f1f1f;
 }
+
+.logo {
+  width: 120px;
+}
+
+.login-text {
+  color: #ffffff;
+  font-size: 40px;
+}
+
+button.btn.btn-primary {
+  background: none;
+  border: none;
+  color: #00d95e;
+  text-transform: uppercase;
+}
+
+/* .container-fluid {
+  min-height: 100vh;
+} */
+
+.vh-100 {
+  height: 100vh;
+}
+
+.m-auto {
+  margin: auto;
+}

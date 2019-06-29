@@ -5,7 +5,8 @@ import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
+import Login from "./components/Login";
+import Search from "./components/Search";
 
 function App() {
   const [authCode, setAuthCode] = useState(
@@ -22,10 +23,6 @@ function App() {
     }
   }, []);
 
-  const handleClick = () => {
-    redirectToAuthPage();
-  };
-
   const redirectToAuthPage = () => {
     const authUrl = "https://accounts.spotify.com/authorize";
     const cid = "9a5438691913462cabcbfbb68aafae95";
@@ -34,30 +31,24 @@ function App() {
     window.location = `${authUrl}?client_id=${cid}&response_type=${rtype}&redirect_uri=${redirect}`;
   };
 
-  const mainBlock = () => {
-    let block = <Button onClick={handleClick}>Please Login</Button>;
-    if (authCode) {
-      block = <div> Welcome back {name} </div>;
-      const userData = axios
-        .get("https://api.spotify.com/v1/me", {
-          headers: { Authorization: `Bearer ${authCode}` }
-        })
-        .then(response => {
-          setName(response.data.display_name);
-        })
-        .catch(err => {
-          localStorage.removeItem("authCode");
-          redirectToAuthPage();
-        });
-    }
-    return block;
+  const container = () => {
+    return authCode ? (
+      <Search
+        authCode={authCode}
+        name={name}
+        setName={setName}
+        redirectToAuthPage={redirectToAuthPage}
+      />
+    ) : (
+      <Login redirectToAuthPage={redirectToAuthPage} />
+    );
   };
 
   return (
     <Fragment>
       <Container fluid>
         <Row>
-          <Col lg={12}>{mainBlock()}</Col>
+          <Col lg={12}>{container()}</Col>
         </Row>
       </Container>
     </Fragment>
