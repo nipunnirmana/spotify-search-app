@@ -1,14 +1,40 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400&display=swap");
+
 body {
   background: #1f1f1f;
+  font-family: "Roboto", sans-serif;
+  color: #ffffff;
 }
 
 .logo {
   width: 120px;
 }
 
+.logo-search {
+  width: 60px;
+}
+
 .login-text {
   color: #ffffff;
   font-size: 40px;
+  font-weight: 300;
+}
+
+.search-spotify {
+  width: 100%;
+  border: none;
+  height: 60px;
+  padding: 0 30px;
+  background: #333333;
+  font-size: 30px;
+  font-weight: 300;
+  color: #ffffff;
+}
+
+.search-user {
+  font-size: 30px;
+  font-weight: 100;
+  padding: 20px 0;
 }
 
 button.btn.btn-primary {
@@ -16,11 +42,8 @@ button.btn.btn-primary {
   border: none;
   color: #00d95e;
   text-transform: uppercase;
+  font-weight: bold;
 }
-
-/* .container-fluid {
-  min-height: 100vh;
-} */
 
 .vh-100 {
   height: 100vh;
@@ -28,4 +51,8 @@ button.btn.btn-primary {
 
 .m-auto {
   margin: auto;
+}
+
+.p-10 {
+  padding: 10px;
 }

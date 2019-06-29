@@ -8,14 +8,14 @@ function Login(props) {
   return (
     <Row className="text-center vh-100">
       <Col className="m-auto">
-        <Col lg={12}>
+        <Col lg={12} className="p-10">
           <img alt="Spotofy" src={SpotifyIcon} className="logo" />
         </Col>
         <Col lg={12}>
           <span className="login-text">PLEASE LOGIN TO CONTINUE</span>
         </Col>
         <Col lg={12}>
-          <Button onClick={props.redirectToAuthPage}>Login</Button>;
+          <Button onClick={props.redirectToAuthPage}>Login</Button>
         </Col>
       </Col>
     </Row>

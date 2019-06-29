@@ -13,6 +13,8 @@ function App() {
     localStorage.getItem("authCode") || null
   );
   const [name, setName] = useState();
+  const [search, setSearch] = useState();
+  const [results, setResults] = useState();
   useEffect(() => {
     const urlSearchData = window.location.hash;
     const hasRequestCode = urlSearchData.search("access_token=");
@@ -31,6 +33,27 @@ function App() {
     window.location = `${authUrl}?client_id=${cid}&response_type=${rtype}&redirect_uri=${redirect}`;
   };
 
+  const doSearch = event => {
+    const q = event.target.value.trim();
+    const type = "track,artist";
+    setSearch(q);
+
+    if (q) {
+      const searchData = axios
+        .get(`https://api.spotify.com/v1/search?q=${q}&type=${type}`, {
+          headers: { Authorization: `Bearer ${authCode}` }
+        })
+        .then(response => {
+          setResults(response.data);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    } else {
+      setResults();
+    }
+  };
+
   const container = () => {
     return authCode ? (
       <Search
@@ -38,6 +61,10 @@ function App() {
         name={name}
         setName={setName}
         redirectToAuthPage={redirectToAuthPage}
+        search={search}
+        doSearch={doSearch}
+        results={results}
+        setResults={setResults}
       />
     ) : (
       <Login redirectToAuthPage={redirectToAuthPage} />
@@ -46,7 +73,7 @@ function App() {
 
   return (
     <Fragment>
-      <Container fluid>
+      <Container>
         <Row>
           <Col lg={12}>{container()}</Col>
         </Row>
