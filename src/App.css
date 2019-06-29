@@ -37,6 +37,34 @@ body {
   padding: 20px 0;
 }
 
+.results-empty {
+  font-size: 50px;
+  font-weight: 100;
+  padding-top: 100px;
+}
+
+.results-artist-header {
+  font-size: 20px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.results-artist {
+  height: 220px;
+}
+
+.results-artist-name {
+  text-overflow: ellipsis;
+}
+
+.results-artist-cover {
+  background-image: url(https://i.scdn.co/image/4fab6d2…);
+  width: 100%;
+  height: 150px;
+  display: inline-block;
+  background-size: cover;
+}
+
 button.btn.btn-primary {
   background: none;
   border: none;

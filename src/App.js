@@ -39,7 +39,7 @@ function App() {
     setSearch(q);
 
     if (q) {
-      const searchData = axios
+      axios
         .get(`https://api.spotify.com/v1/search?q=${q}&type=${type}`, {
           headers: { Authorization: `Bearer ${authCode}` }
         })

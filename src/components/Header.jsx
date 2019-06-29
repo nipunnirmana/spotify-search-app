@@ -3,7 +3,7 @@ import axios from "axios";
 
 function Header(props) {
   useEffect(() => {
-    const userData = axios
+    axios
       .get("https://api.spotify.com/v1/me", {
         headers: { Authorization: `Bearer ${props.authCode}` }
       })
@@ -11,7 +11,6 @@ function Header(props) {
         props.setName(response.data.display_name);
       })
       .catch(err => {
-        debugger;
         localStorage.removeItem("authCode");
         props.redirectToAuthPage();
       });
