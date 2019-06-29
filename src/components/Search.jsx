@@ -4,26 +4,18 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import SpotifyIcon from "../assests/icons/spotify.svg";
 import Results from "./Results";
+import Header from "./Header";
 
 function Search(props) {
-  useEffect(() => {
-    const userData = axios
-      .get("https://api.spotify.com/v1/me", {
-        headers: { Authorization: `Bearer ${props.authCode}` }
-      })
-      .then(response => {
-        props.setName(response.data.display_name);
-      })
-      .catch(err => {
-        localStorage.removeItem("authCode");
-        props.redirectToAuthPage();
-      });
-  });
-
   return (
     <Row>
       <Col lg={12} className="text-right">
-        <div className="search-user">{props.name}</div>
+        <Header
+          name={props.name}
+          setName={props.setName}
+          authCode={props.authCode}
+          redirectToAuthPage={props.redirectToAuthPage}
+        />
       </Col>
       <Col lg={1}>
         <img alt="Spotofy" src={SpotifyIcon} className="logo-search" />
