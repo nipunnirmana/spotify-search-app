@@ -16,18 +16,18 @@ function Search(props) {
           redirectToAuthPage={props.redirectToAuthPage}
         />
       </Col>
-      <Col lg={1}>
+      <Col xs={2} lg={1}>
         <img alt="Spotofy" src={SpotifyIcon} className="logo-search" />
       </Col>
-      <Col lg={11}>
+      <Col xs={10} lg={11}>
         <input
           type="text"
           placeholder="SEARCH SPOTIFY..."
           className="search-spotify"
-          onChange={props.doSearch}
+          onKeyUp={props.doSearch}
         />
       </Col>
-      <Col lg={12}>
+      <Col lg={{ span: 11, offset: 1 }}>
         <Results results={props.results} search={props.search} />
       </Col>
     </Row>

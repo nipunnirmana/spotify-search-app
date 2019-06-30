@@ -34,15 +34,20 @@ function App() {
   };
 
   const doSearch = event => {
-    const q = event.target.value.trim();
+    const q = event.target.value.trim().replace(/[^\w\s]/gi, "");
     const type = "track,artist";
+    const m = "us";
+    const limit = 16;
     setSearch(q);
 
     if (q) {
       axios
-        .get(`https://api.spotify.com/v1/search?q=${q}&type=${type}`, {
-          headers: { Authorization: `Bearer ${authCode}` }
-        })
+        .get(
+          `https://api.spotify.com/v1/search?q=${q}&type=${type}&market=${m}&limit=${limit}`,
+          {
+            headers: { Authorization: `Bearer ${authCode}` }
+          }
+        )
         .then(response => {
           setResults(response.data);
         })
