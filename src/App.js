@@ -12,6 +12,9 @@ import "./bootstrap.min.css";
 import "./App.css";
 
 function App(props) {
+  /**
+   * Fetch Auth Code from Localstorage
+   */
   const [authCode, setAuthCode] = useState(
     localStorage.getItem("authCode") || null
   );

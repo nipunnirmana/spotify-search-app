@@ -15,6 +15,9 @@ function Header(props) {
         props.setName(response.data.display_name);
       })
       .catch(err => {
+        /**
+         * Redirect to Spotify Authentication if token is expired or invalidated
+         */
         localStorage.removeItem("authCode");
         props.redirectToAuthPage();
       });
