@@ -47,8 +47,6 @@ function Results(props) {
         });
       }
 
-      console.log(props.results);
-
       if (props.results.artists.total) {
         block = [
           ...block,

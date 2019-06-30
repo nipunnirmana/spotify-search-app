@@ -21,10 +21,12 @@ function Search(props) {
       </Col>
       <Col xs={10} lg={11}>
         <input
+          autoFocus
           type="text"
           placeholder="SEARCH SPOTIFY..."
           className="search-spotify"
-          onKeyUp={props.doSearch}
+          onChange={props.doSearch}
+          defaultValue={props.search}
         />
       </Col>
       <Col lg={{ span: 11, offset: 1 }}>

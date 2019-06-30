@@ -5,14 +5,15 @@ import SpotifyIcon from "../assests/icons/spotify.svg";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import EmptyAlbumCover from "../assests/images/empty_album.png";
 
 function Track(props) {
   const trackId = window.location.pathname.split("/track/")[1];
 
   const [trackData, setTrackData] = useState();
+  const [imgUrl, setImgUrl] = useState(EmptyAlbumCover);
 
   useEffect(() => {
-    console.count();
     if (!trackData) {
       axios
         .get(`https://api.spotify.com/v1/tracks/${trackId}`, {
@@ -28,7 +29,46 @@ function Track(props) {
   });
 
   const block = () => {
-    return trackData && <h1>{trackData.name}</h1>;
+    if (trackData) {
+      if (trackData.album.images.length) {
+        var img = new Image();
+        img.src = trackData.album.images[0].url;
+        img.onload = function() {
+          setImgUrl(img.src);
+        };
+      }
+
+      var minutes = Math.floor(trackData.duration_ms / 60000);
+      var seconds = ((trackData.duration_ms % 60000) / 1000).toFixed(0);
+      const duration = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+      const artists = trackData.artists.map(artist => (
+        <Link key={artist.id} to="/">
+          {artist.name}
+        </Link>
+      ));
+      return (
+        <Row className="track">
+          <Col lg={3}>
+            <span
+              className="track-album"
+              style={{ backgroundImage: `url(${imgUrl})` }}
+            />
+          </Col>
+          <Col lg={9}>
+            <Col lg={12} className="p-0">
+              <div className="track-name">{trackData.name}</div>
+            </Col>
+            <Col lg={12} className="track-duration p-0">
+              {duration}
+            </Col>
+            <Col lg={12} className="track-artists p-0">
+              {artists}
+            </Col>
+          </Col>
+        </Row>
+      );
+    }
   };
 
   return (
