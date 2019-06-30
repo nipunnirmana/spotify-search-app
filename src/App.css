@@ -67,10 +67,6 @@ a {
   margin-top: 20px;
 }
 
-/* .results-artist {
-  height: 220px;
-} */
-
 .results-artist-name {
   text-overflow: ellipsis;
   height: 22px;
@@ -154,7 +150,7 @@ button.btn.btn-primary {
 
 /**Media Queries**/
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 991px) {
   .track-album {
     height: 250px;
   }
@@ -167,7 +163,6 @@ button.btn.btn-primary {
   .results-track-cover,
   .results-artist-cover {
     height: 400px;
-    background-position: center -60px;
   }
 
   .results-tracks-header,
@@ -195,5 +190,37 @@ button.btn.btn-primary {
     height: 70px;
     font-size: 40px;
     margin: 40px 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .results-empty {
+    font-size: 30px;
+    padding-top: 50px;
+  }
+
+  .search-spotify {
+    padding: 0 10px;
+    font-size: 18px;
+  }
+
+  .logo-search-wrapper {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  .header-user {
+    font-size: 18px;
+  }
+
+  .back-to-search {
+    font-size: 25px;
+    margin-top: 12px;
+  }
+
+  .results-artist-name {
+    height: 30px;
+    font-size: 20px;
+    margin: 10px 0;
   }
 }

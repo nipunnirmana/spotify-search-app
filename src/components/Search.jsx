@@ -16,10 +16,10 @@ function Search(props) {
           redirectToAuthPage={props.redirectToAuthPage}
         />
       </Col>
-      <Col xs={2} lg={1}>
+      <Col xs={12} sm={2} lg={1} className="logo-search-wrapper">
         <img alt="Spotify" src={SpotifyIcon} className="logo-search" />
       </Col>
-      <Col xs={10} lg={11}>
+      <Col xs={12} sm={10} lg={11}>
         <input
           autoFocus
           type="text"
