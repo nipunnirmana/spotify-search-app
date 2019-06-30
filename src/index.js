@@ -1,17 +1,5 @@
-import React from "react";
 import ReactDOM from "react-dom";
+import Routing from "./Routes";
 import "./index.css";
-import App from "./App";
-import { Route, BrowserRouter as Router } from "react-router-dom";
 
-const routing = (
-  <Router>
-    <div>
-      <Route exact path="/" component={App} />
-      <Route exact path="/track/:id" component={App} />
-      <Route exact path="/album/:id" component={App} />
-    </div>
-  </Router>
-);
-
-ReactDOM.render(routing, document.getElementById("root"));
+ReactDOM.render(Routing, document.getElementById("root"));
