@@ -7,20 +7,20 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
 
-function Track(props) {
-  const trackId = window.location.pathname.split("/track/")[1];
+function Album(props) {
+  const albumId = window.location.pathname.split("/album/")[1];
 
-  const [trackData, setTrackData] = useState();
+  const [albumData, setAlbumData] = useState();
   const [imgUrl, setImgUrl] = useState(EmptyAlbumCover);
 
   useEffect(() => {
-    if (!trackData) {
+    if (!albumData) {
       axios
-        .get(`https://api.spotify.com/v1/tracks/${trackId}`, {
+        .get(`https://api.spotify.com/v1/albums/${albumId}`, {
           headers: { Authorization: `Bearer ${props.authCode}` }
         })
         .then(response => {
-          setTrackData(response.data);
+          setAlbumData(response.data);
         })
         .catch(err => {
           console.error(err);
@@ -29,24 +29,43 @@ function Track(props) {
   });
 
   const block = () => {
-    if (trackData) {
-      if (trackData.album.images.length) {
+    if (albumData) {
+      if (albumData.images.length) {
         var img = new Image();
-        img.src = trackData.album.images[0].url;
+        img.src = albumData.images[0].url;
         img.onload = function() {
           setImgUrl(img.src);
         };
       }
-
-      var minutes = Math.floor(trackData.duration_ms / 60000);
-      var seconds = ((trackData.duration_ms % 60000) / 1000).toFixed(0);
-      const duration = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
-
-      const artists = trackData.artists.map(artist => (
+      const artists = albumData.artists.map(artist => (
         <Link key={artist.id} to="/">
           {artist.name}
         </Link>
       ));
+
+      const trackData = albumData.tracks.items.map(track => {
+        var minutes = Math.floor(track.duration_ms / 60000);
+        var seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
+        const duration = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
+        return (
+          <Col key={track.id} lg={12} className="results-track">
+            <Row>
+              <Col lg={12}>
+                <Row>
+                  <Col lg={10}>
+                    <Link to={`/track/${track.id}`}>{track.name}</Link>
+                  </Col>
+                  <Col lg={2} className="text-right">
+                    <span>{duration}</span>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </Col>
+        );
+      });
+
       return (
         <Row className="track">
           <Col lg={3}>
@@ -57,14 +76,19 @@ function Track(props) {
           </Col>
           <Col lg={9}>
             <Col lg={12} className="p-0">
-              <div className="track-name">{trackData.name}</div>
-            </Col>
-            <Col lg={12} className="track-duration p-0">
-              {duration}
+              <div className="track-name">{albumData.name}</div>
             </Col>
             <Col lg={12} className="track-artists p-0">
               {artists}
             </Col>
+          </Col>
+
+          <Col lg={12} className="results-tracks-header">
+            TRACK LIST
+          </Col>
+
+          <Col lg={12}>
+            <Row>{trackData}</Row>
           </Col>
         </Row>
       );
@@ -97,4 +121,4 @@ function Track(props) {
   );
 }
 
-export default Track;
+export default Album;

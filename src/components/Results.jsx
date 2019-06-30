@@ -19,6 +19,16 @@ function Results(props) {
         ];
 
         props.results.tracks.items.forEach(track => {
+          const artists = track.artists.map(artist => (
+            <Link key={artist.id} to="/">
+              {artist.name}
+            </Link>
+          ));
+
+          var minutes = Math.floor(track.duration_ms / 60000);
+          var seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
+          const duration = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+
           let imgUrl = track.album.images.length
             ? track.album.images[0].url
             : EmptyAlbumCover;
@@ -28,17 +38,25 @@ function Results(props) {
             <Col key={track.id} lg={12} className="results-track">
               <Row>
                 <Col lg={2}>
-                  <span
-                    className="results-track-cover"
-                    style={{ backgroundImage: `url(${imgUrl})` }}
-                  />
+                  <Link to={`/album/${track.album.id}`}>
+                    <span
+                      className="results-track-cover"
+                      style={{ backgroundImage: `url(${imgUrl})` }}
+                    />
+                  </Link>
                 </Col>
                 <Col lg={10}>
                   <Row>
-                    <Col lg={12}>
+                    <Col lg={10}>
                       <Link to={`/track/${track.id}`}>{track.name}</Link>
                     </Col>
-                    <Col lg={12}>ARTIST</Col>
+                    <Col lg={2} className="text-right">
+                      <span>{duration}</span>
+                    </Col>
+                    <Col lg={12} className="track-artists">
+                      <span>Artist : </span>
+                      {artists}
+                    </Col>
                   </Row>
                 </Col>
               </Row>

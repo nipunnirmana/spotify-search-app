@@ -8,6 +8,7 @@ import Col from "react-bootstrap/Col";
 import Login from "./components/Login";
 import Search from "./components/Search";
 import Track from "./components/Track";
+import Album from "./components/Album";
 
 function App(props) {
   const [authCode, setAuthCode] = useState(
@@ -67,6 +68,15 @@ function App(props) {
       if (props.match.path === "/track/:id") {
         block = (
           <Track
+            authCode={authCode}
+            name={name}
+            setName={setName}
+            redirectToAuthPage={redirectToAuthPage}
+          />
+        );
+      } else if (props.match.path === "/album/:id") {
+        block = (
+          <Album
             authCode={authCode}
             name={name}
             setName={setName}
