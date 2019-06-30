@@ -43,7 +43,7 @@ function Track(props) {
       const duration = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 
       const artists = trackData.artists.map(artist => (
-        <Link key={artist.id} to="/">
+        <Link key={artist.id} to={`/artist/${artist.id}`}>
           {artist.name}
         </Link>
       ));

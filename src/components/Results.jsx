@@ -20,7 +20,7 @@ function Results(props) {
 
         props.results.tracks.items.forEach(track => {
           const artists = track.artists.map(artist => (
-            <Link key={artist.id} to="/">
+            <Link key={artist.id} to={`/artist/${artist.id}`}>
               {artist.name}
             </Link>
           ));
@@ -80,18 +80,20 @@ function Results(props) {
           block = [
             ...block,
             <Col lg={2} key={artist.id} className="results-artist">
-              <Row>
-                <Col lg={12}>
-                  <div
-                    className="results-artist-cover"
-                    style={{ backgroundImage: `url(${imgUrl})` }}
-                  />
-                </Col>
+              <Link to={`/artist/${artist.id}`}>
+                <Row>
+                  <Col lg={12}>
+                    <div
+                      className="results-artist-cover"
+                      style={{ backgroundImage: `url(${imgUrl})` }}
+                    />
+                  </Col>
 
-                <Col lg={12}>
-                  <span className="results-artist-name">{artist.name}</span>
-                </Col>
-              </Row>
+                  <Col lg={12}>
+                    <span className="results-artist-name">{artist.name}</span>
+                  </Col>
+                </Row>
+              </Link>
             </Col>
           ];
         });

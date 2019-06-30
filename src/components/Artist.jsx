@@ -8,42 +8,77 @@ import axios from "axios";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
 
 function Artist(props) {
-  const albumId = window.location.pathname.split("/album/")[1];
-
-  const [albumData, setAlbumData] = useState();
+  const artistId = window.location.pathname.split("/artist/")[1];
+  const [artistData, setArtistData] = useState();
   const [imgUrl, setImgUrl] = useState(EmptyAlbumCover);
+  const [topTracksData, setTopTracks] = useState();
 
   useEffect(() => {
-    if (!albumData) {
+    if (!artistData) {
       axios
-        .get(`https://api.spotify.com/v1/albums/${albumId}`, {
+        .get(`https://api.spotify.com/v1/artists/${artistId}`, {
           headers: { Authorization: `Bearer ${props.authCode}` }
         })
         .then(response => {
-          setAlbumData(response.data);
+          setArtistData(response.data);
         })
         .catch(err => {
           console.error(err);
         });
     }
-  });
+
+    if (!topTracksData) {
+      const country = "us";
+      setTopTracks("Loading");
+      axios
+        .get(
+          `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=${country}`,
+          {
+            headers: { Authorization: `Bearer ${props.authCode}` }
+          }
+        )
+        .then(response => {
+          setTopTracks(response.data);
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    }
+  }, [artistData, artistId, props.authCode, topTracksData]);
 
   const block = () => {
-    if (albumData) {
-      if (albumData.images.length) {
+    if (artistData) {
+      if (artistData.images.length) {
         var img = new Image();
-        img.src = albumData.images[0].url;
+        img.src = artistData.images[0].url;
         img.onload = function() {
           setImgUrl(img.src);
         };
       }
-      const artists = albumData.artists.map(artist => (
-        <Link key={artist.id} to="/">
-          {artist.name}
-        </Link>
-      ));
 
-      const trackData = albumData.tracks.items.map(track => {
+      return (
+        <Row className="track">
+          <Col lg={3}>
+            <span
+              className="track-album"
+              style={{ backgroundImage: `url(${imgUrl})` }}
+            />
+          </Col>
+          <Col lg={9}>
+            <Col lg={12} className="p-0">
+              <div className="track-name">{artistData.name}</div>
+            </Col>
+
+            <Col lg={12} className="track-artists p-0" />
+          </Col>
+        </Row>
+      );
+    }
+  };
+
+  const topTracksBlock = () => {
+    if (topTracksData && topTracksData !== "Loading") {
+      return topTracksData.tracks.map(track => {
         var minutes = Math.floor(track.duration_ms / 60000);
         var seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
         const duration = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
@@ -65,33 +100,6 @@ function Artist(props) {
           </Col>
         );
       });
-
-      return (
-        <Row className="track">
-          <Col lg={3}>
-            <span
-              className="track-album"
-              style={{ backgroundImage: `url(${imgUrl})` }}
-            />
-          </Col>
-          <Col lg={9}>
-            <Col lg={12} className="p-0">
-              <div className="track-name">{albumData.name}</div>
-            </Col>
-            <Col lg={12} className="track-artists p-0">
-              {artists}
-            </Col>
-          </Col>
-
-          <Col lg={12} className="results-tracks-header">
-            TRACK LIST
-          </Col>
-
-          <Col lg={12}>
-            <Row>{trackData}</Row>
-          </Col>
-        </Row>
-      );
     }
   };
 
@@ -117,6 +125,12 @@ function Artist(props) {
       </Col>
 
       <Col lg={{ span: 11, offset: 1 }}>{block()}</Col>
+
+      <Col lg={{ span: 11, offset: 1 }} className="results-tracks-header">
+        ARTIST TOP 10 TRACKS
+      </Col>
+
+      <Col lg={{ span: 11, offset: 1 }}>{topTracksBlock()}</Col>
     </Row>
   );
 }

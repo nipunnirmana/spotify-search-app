@@ -38,7 +38,7 @@ function Album(props) {
         };
       }
       const artists = albumData.artists.map(artist => (
-        <Link key={artist.id} to="/">
+        <Link key={artist.id} to={`/artist/${artist.id}`}>
           {artist.name}
         </Link>
       ));

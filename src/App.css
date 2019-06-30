@@ -6,6 +6,10 @@ body {
   color: #ffffff;
 }
 
+a {
+  cursor: pointer;
+}
+
 .logo {
   width: 120px;
 }
@@ -108,7 +112,7 @@ body {
 }
 
 .track {
-  margin-top: 100px;
+  margin-top: 30px;
 }
 
 .track-name {

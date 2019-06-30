@@ -9,6 +9,7 @@ import Login from "./components/Login";
 import Search from "./components/Search";
 import Track from "./components/Track";
 import Album from "./components/Album";
+import Artist from "./components/Artist";
 
 function App(props) {
   const [authCode, setAuthCode] = useState(
@@ -77,6 +78,15 @@ function App(props) {
       } else if (props.match.path === "/album/:id") {
         block = (
           <Album
+            authCode={authCode}
+            name={name}
+            setName={setName}
+            redirectToAuthPage={redirectToAuthPage}
+          />
+        );
+      } else if (props.match.path === "/artist/:id") {
+        block = (
+          <Artist
             authCode={authCode}
             name={name}
             setName={setName}
