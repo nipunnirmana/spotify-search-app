@@ -18,6 +18,9 @@ function App(props) {
   const [name, setName] = useState();
   const [search, setSearch] = useState();
   const [results, setResults] = useState();
+
+  const signal = axios.CancelToken.source();
+
   useEffect(() => {
     const urlSearchData = window.location.hash;
     const hasRequestCode = urlSearchData.search("access_token=");
@@ -48,7 +51,8 @@ function App(props) {
         .get(
           `https://api.spotify.com/v1/search?q=${q}&type=${type}&market=${m}&limit=${limit}`,
           {
-            headers: { Authorization: `Bearer ${authCode}` }
+            headers: { Authorization: `Bearer ${authCode}` },
+            cancelToken: signal.token
           }
         )
         .then(response => {
@@ -56,6 +60,9 @@ function App(props) {
         })
         .catch(err => {
           console.error(err);
+          if (axios.isCancel(err)) {
+            console.log("Error: ", err.message);
+          }
         });
     } else {
       setResults();
