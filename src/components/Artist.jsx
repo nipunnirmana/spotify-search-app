@@ -14,6 +14,9 @@ function Artist(props) {
   const [topTracksData, setTopTracks] = useState();
 
   useEffect(() => {
+    /**
+     * Fetch Artist Data
+     */
     if (!artistData) {
       axios
         .get(`https://api.spotify.com/v1/artists/${artistId}`, {
@@ -26,6 +29,10 @@ function Artist(props) {
           console.error(err);
         });
     }
+
+    /**
+     * Fetch Top Tracks by Artist Data
+     */
 
     if (!topTracksData) {
       const country = "us";
@@ -49,6 +56,9 @@ function Artist(props) {
   const block = () => {
     if (artistData) {
       if (artistData.images.length) {
+        /**
+         * Lazy Load Album Image
+         */
         var img = new Image();
         img.src = artistData.images[0].url;
         img.onload = function() {
@@ -75,6 +85,10 @@ function Artist(props) {
       );
     }
   };
+
+  /**
+   * Top Track list related data
+   */
 
   const topTracksBlock = () => {
     if (topTracksData && topTracksData !== "Loading") {

@@ -19,9 +19,15 @@ function App(props) {
   const [search, setSearch] = useState();
   const [results, setResults] = useState();
 
+  /**
+   * Creating Cancelation token for Axions (to cancel unwated requests)
+   */
   const signal = axios.CancelToken.source();
 
   useEffect(() => {
+    /**
+     * Getting Access Token from URL Hash
+     */
     const urlSearchData = window.location.hash;
     const hasRequestCode = urlSearchData.search("access_token=");
     if (hasRequestCode >= 0) {
@@ -31,6 +37,9 @@ function App(props) {
     }
   }, []);
 
+  /**
+   * Redirect to Auth page for Spotify Authenticatio/Login
+   */
   const redirectToAuthPage = () => {
     const authUrl = "https://accounts.spotify.com/authorize";
     const cid = "9a5438691913462cabcbfbb68aafae95";
@@ -38,6 +47,10 @@ function App(props) {
     const redirect = "http://localhost:3000/";
     window.location = `${authUrl}?client_id=${cid}&response_type=${rtype}&redirect_uri=${redirect}`;
   };
+
+  /**
+   * Search Spotify based on input query
+   */
 
   const doSearch = event => {
     const q = event.target.value.trim().replace(/[^\w\s]/gi, "");
@@ -52,7 +65,7 @@ function App(props) {
           `https://api.spotify.com/v1/search?q=${q}&type=${type}&market=${m}&limit=${limit}`,
           {
             headers: { Authorization: `Bearer ${authCode}` },
-            cancelToken: signal.token
+            cancelToken: signal.token // Passing Cancel token for Axios
           }
         )
         .then(response => {

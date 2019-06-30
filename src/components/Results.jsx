@@ -23,6 +23,10 @@ function Results(props) {
             </Link>
           ));
 
+          /**
+           * Converting milliseconds to minutes
+           */
+
           var minutes = Math.floor(track.duration_ms / 60000);
           var seconds = ((track.duration_ms % 60000) / 1000).toFixed(0);
           const duration = minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
@@ -96,6 +100,10 @@ function Results(props) {
           ];
         });
       }
+
+      /**
+       * Empty results block
+       */
 
       if (!props.results.tracks.total && !props.results.artists.total) {
         block = (

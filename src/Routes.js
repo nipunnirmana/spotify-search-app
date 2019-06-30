@@ -2,6 +2,10 @@ import React from "react";
 import App from "./App";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 
+/**
+ * Routes for Router
+ */
+
 const routing = (
   <Router>
     <div>

@@ -3,6 +3,10 @@ import axios from "axios";
 
 function Header(props) {
   useEffect(() => {
+    /**
+     * Make sure Authentication code works redirects to auth page if its not
+     */
+
     axios
       .get("https://api.spotify.com/v1/me", {
         headers: { Authorization: `Bearer ${props.authCode}` }

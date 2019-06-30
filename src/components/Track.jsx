@@ -14,6 +14,11 @@ function Track(props) {
   const [imgUrl, setImgUrl] = useState(EmptyAlbumCover);
 
   useEffect(() => {
+    
+    /**
+     * Get Track Data
+     */
+
     if (!trackData) {
       axios
         .get(`https://api.spotify.com/v1/tracks/${trackId}`, {

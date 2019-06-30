@@ -13,6 +13,9 @@ function Album(props) {
   const [imgUrl, setImgUrl] = useState(EmptyAlbumCover);
 
   useEffect(() => {
+    /**
+     * Fetch Album Data
+     */
     if (!albumData) {
       axios
         .get(`https://api.spotify.com/v1/albums/${albumId}`, {
@@ -30,17 +33,28 @@ function Album(props) {
   const block = () => {
     if (albumData) {
       if (albumData.images.length) {
+        /**
+         * Lazy Load Album Image
+         */
         var img = new Image();
         img.src = albumData.images[0].url;
         img.onload = function() {
           setImgUrl(img.src);
         };
       }
+
+      /**
+       * Get album artists list
+       */
       const artists = albumData.artists.map(artist => (
         <Link key={artist.id} to={`/artist/${artist.id}`}>
           {artist.name}
         </Link>
       ));
+
+      /**
+       * Track list related data
+       */
 
       const trackData = albumData.tracks.items.map(track => {
         var minutes = Math.floor(track.duration_ms / 60000);
