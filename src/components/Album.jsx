@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import Header from "./Header";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import SpotifyIcon from "../assests/icons/spotify.svg";
-import Header from "./Header";
-import { Link } from "react-router-dom";
-import axios from "axios";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
 
 function Album(props) {
   const albumId = window.location.pathname.split("/album/")[1];
-
   const [albumData, setAlbumData] = useState();
   const [imgUrl, setImgUrl] = useState(EmptyAlbumCover);
 

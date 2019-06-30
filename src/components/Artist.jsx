@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import Header from "./Header";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import SpotifyIcon from "../assests/icons/spotify.svg";
-import Header from "./Header";
-import { Link } from "react-router-dom";
-import axios from "axios";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
 
 function Artist(props) {
@@ -127,7 +127,7 @@ function Artist(props) {
       <Col lg={{ span: 11, offset: 1 }}>{block()}</Col>
 
       <Col lg={{ span: 11, offset: 1 }} className="results-tracks-header">
-        ARTIST TOP 10 TRACKS
+        Artists Top TRACKS
       </Col>
 
       <Col lg={{ span: 11, offset: 1 }}>{topTracksBlock()}</Col>

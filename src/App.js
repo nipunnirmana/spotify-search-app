@@ -1,15 +1,15 @@
 import React, { useEffect, useState, Fragment } from "react";
-import "./bootstrap.min.css";
-import "./App.css";
 import axios from "axios";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Login from "./components/Login";
 import Search from "./components/Search";
 import Track from "./components/Track";
 import Album from "./components/Album";
 import Artist from "./components/Artist";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import "./bootstrap.min.css";
+import "./App.css";
 
 function App(props) {
   const [authCode, setAuthCode] = useState(

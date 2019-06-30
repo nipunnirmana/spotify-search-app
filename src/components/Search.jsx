@@ -1,9 +1,9 @@
 import React from "react";
+import Results from "./Results";
+import Header from "./Header";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import SpotifyIcon from "../assests/icons/spotify.svg";
-import Results from "./Results";
-import Header from "./Header";
 
 function Search(props) {
   return (

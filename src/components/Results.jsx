@@ -1,12 +1,10 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import { Link } from "react-router-dom";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
 
 function Results(props) {
-  useEffect(() => {});
-
   const block = () => {
     let block = [];
     if (props.results && props.search.length) {
