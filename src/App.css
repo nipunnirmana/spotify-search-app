@@ -67,9 +67,9 @@ a {
   margin-top: 20px;
 }
 
-.results-artist {
+/* .results-artist {
   height: 220px;
-}
+} */
 
 .results-artist-name {
   text-overflow: ellipsis;
@@ -150,4 +150,50 @@ button.btn.btn-primary {
 
 .p-0 {
   padding: 0;
+}
+
+/**Media Queries**/
+
+@media only screen and (max-width: 768px) {
+  .track-album {
+    height: 250px;
+  }
+  .back-to-search {
+    text-align: right;
+    width: 100%;
+    display: inline-block;
+  }
+
+  .results-track-cover,
+  .results-artist-cover {
+    height: 400px;
+    background-position: center -60px;
+  }
+
+  .results-tracks-header,
+  .results-artists-header {
+    text-align: center;
+  }
+
+  .results-artists-header {
+    border-top: 2px solid green;
+  }
+
+  .results-duration {
+    text-align: left !important;
+  }
+
+  .results-track {
+    border-bottom: 1px solid #333333;
+    padding-bottom: 36px;
+    font-size: 20px;
+    display: inline-block;
+    margin: 10px 0;
+  }
+
+  .results-artist-name {
+    height: 70px;
+    font-size: 40px;
+    margin: 40px 0;
+  }
 }

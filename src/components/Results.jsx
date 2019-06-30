@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -45,10 +45,10 @@ function Results(props) {
                 </Col>
                 <Col lg={10}>
                   <Row>
-                    <Col lg={10}>
+                    <Col lg={10} md={12}>
                       <Link to={`/track/${track.id}`}>{track.name}</Link>
                     </Col>
-                    <Col lg={2} className="text-right">
+                    <Col lg={2} md={12} className="text-right results-duration">
                       <span>{duration}</span>
                     </Col>
                     <Col lg={12} className="track-artists">

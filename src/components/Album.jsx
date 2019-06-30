@@ -52,10 +52,10 @@ function Album(props) {
             <Row>
               <Col lg={12}>
                 <Row>
-                  <Col lg={10}>
+                  <Col lg={10} md={9}>
                     <Link to={`/track/${track.id}`}>{track.name}</Link>
                   </Col>
-                  <Col lg={2} className="text-right">
+                  <Col lg={2} md={3} className="text-right">
                     <span>{duration}</span>
                   </Col>
                 </Row>
