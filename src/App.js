@@ -7,8 +7,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Login from "./components/Login";
 import Search from "./components/Search";
+import Track from "./components/Track";
 
-function App() {
+function App(props) {
   const [authCode, setAuthCode] = useState(
     localStorage.getItem("authCode") || null
   );
@@ -60,20 +61,37 @@ function App() {
   };
 
   const container = () => {
-    return authCode ? (
-      <Search
-        authCode={authCode}
-        name={name}
-        setName={setName}
-        redirectToAuthPage={redirectToAuthPage}
-        search={search}
-        doSearch={doSearch}
-        results={results}
-        setResults={setResults}
-      />
-    ) : (
-      <Login redirectToAuthPage={redirectToAuthPage} />
-    );
+    let block;
+
+    if (authCode) {
+      if (props.match.path === "/track/:id") {
+        block = (
+          <Track
+            authCode={authCode}
+            name={name}
+            setName={setName}
+            redirectToAuthPage={redirectToAuthPage}
+          />
+        );
+      } else {
+        block = (
+          <Search
+            authCode={authCode}
+            name={name}
+            setName={setName}
+            redirectToAuthPage={redirectToAuthPage}
+            search={search}
+            doSearch={doSearch}
+            results={results}
+            setResults={setResults}
+          />
+        );
+      }
+    } else {
+      block = <Login redirectToAuthPage={redirectToAuthPage} />;
+    }
+
+    return block;
   };
 
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import Image from "react-bootstrap/Image";
+import { Link } from "react-router-dom";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
 
 function Results(props) {
@@ -24,6 +24,7 @@ function Results(props) {
             : EmptyAlbumCover;
           block = [
             ...block,
+
             <Col key={track.id} lg={12} className="results-track">
               <Row>
                 <Col lg={2}>
@@ -34,7 +35,9 @@ function Results(props) {
                 </Col>
                 <Col lg={10}>
                   <Row>
-                    <Col lg={12}>{track.name}</Col>
+                    <Col lg={12}>
+                      <Link to={`/track/${track.id}`}>{track.name}</Link>
+                    </Col>
                     <Col lg={12}>ARTIST</Col>
                   </Row>
                 </Col>

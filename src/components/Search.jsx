@@ -17,7 +17,7 @@ function Search(props) {
         />
       </Col>
       <Col xs={2} lg={1}>
-        <img alt="Spotofy" src={SpotifyIcon} className="logo-search" />
+        <img alt="Spotify" src={SpotifyIcon} className="logo-search" />
       </Col>
       <Col xs={10} lg={11}>
         <input
