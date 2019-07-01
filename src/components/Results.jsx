@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
@@ -131,5 +132,10 @@ function Results(props) {
 
   return <Row>{block()}</Row>;
 }
+
+Results.propTypes = {
+  results: PropTypes.object,
+  search: PropTypes.string
+};
 
 export default Results;

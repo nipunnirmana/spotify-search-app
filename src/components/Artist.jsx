@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
@@ -148,5 +149,12 @@ function Artist(props) {
     </Row>
   );
 }
+
+Artist.propTypes = {
+  redirectToAuthPage: PropTypes.func,
+  authCode: PropTypes.string,
+  name: PropTypes.string,
+  setName: PropTypes.func
+};
 
 export default Artist;

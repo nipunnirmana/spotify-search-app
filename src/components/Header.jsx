@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 
 function Header(props) {
@@ -25,5 +26,12 @@ function Header(props) {
 
   return <div className="header-user">{props.name}</div>;
 }
+
+Header.propTypes = {
+  redirectToAuthPage: PropTypes.func,
+  authCode: PropTypes.string,
+  name: PropTypes.string,
+  setName: PropTypes.func
+};
 
 export default Header;

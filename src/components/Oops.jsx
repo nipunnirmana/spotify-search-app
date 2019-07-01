@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import SpotifyIcon from "../assests/icons/spotify.svg";
 
-function Login(props) {
+function Oops() {
   return (
     <Row className="text-center vh-100 oops">
       <Col className="m-auto">
@@ -27,4 +27,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default Oops;

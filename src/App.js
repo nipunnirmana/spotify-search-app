@@ -1,4 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import Login from "./components/Login";
 import Search from "./components/Search";
@@ -86,7 +87,6 @@ function App(props) {
   };
 
   const container = () => {
-    debugger;
     let block;
 
     if (authCode) {
@@ -118,7 +118,6 @@ function App(props) {
           />
         );
       } else {
-        debugger;
         block = (
           <Search
             authCode={authCode}
@@ -149,5 +148,9 @@ function App(props) {
     </Fragment>
   );
 }
+
+App.propTypes = {
+  match: PropTypes.object
+};
 
 export default App;

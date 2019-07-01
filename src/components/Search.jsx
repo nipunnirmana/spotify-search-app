@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Results from "./Results";
 import Header from "./Header";
 import Col from "react-bootstrap/Col";
@@ -35,5 +36,15 @@ function Search(props) {
     </Row>
   );
 }
+
+Search.propTypes = {
+  redirectToAuthPage: PropTypes.func,
+  authCode: PropTypes.string,
+  name: PropTypes.string,
+  setName: PropTypes.func,
+  doSearch: PropTypes.func,
+  results: PropTypes.object,
+  search: PropTypes.string
+};
 
 export default Search;
