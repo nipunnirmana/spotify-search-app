@@ -13,6 +13,7 @@
 App created based on Spotify web API - https://developer.spotify.com/documentation/web-api/  
 
 App is 100% Client/Frontend based hense used Spotify [Implicit Grant Flow] 
+
 Implicit Grant Flow does not requires any extra server side requests in order to authenticate which makes it ideal for a client side only app
 
 ##### Request Flow 
@@ -63,7 +64,7 @@ Clone or Download the [Git Repo]
 ```sh
 $ cd spotify-search-app
 $ npm install
-$ npm run
+$ npm run start
 ```
 
 ### App Usage
