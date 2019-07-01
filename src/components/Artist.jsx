@@ -9,7 +9,6 @@ import SpotifyIcon from "../assests/icons/spotify.svg";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
 
 function Artist(props) {
-  const artistId = window.location.pathname.split("/artist/")[1];
   const [artistData, setArtistData] = useState();
   const [imgUrl, setImgUrl] = useState(EmptyAlbumCover);
   const [topTracksData, setTopTracks] = useState();
@@ -20,7 +19,7 @@ function Artist(props) {
      */
     if (!artistData) {
       axios
-        .get(`https://api.spotify.com/v1/artists/${artistId}`, {
+        .get(`https://api.spotify.com/v1/artists/${props.artistId}`, {
           headers: { Authorization: `Bearer ${props.authCode}` }
         })
         .then(response => {
@@ -40,7 +39,9 @@ function Artist(props) {
       setTopTracks("Loading");
       axios
         .get(
-          `https://api.spotify.com/v1/artists/${artistId}/top-tracks?country=${country}`,
+          `https://api.spotify.com/v1/artists/${
+            props.artistId
+          }/top-tracks?country=${country}`,
           {
             headers: { Authorization: `Bearer ${props.authCode}` }
           }
@@ -52,7 +53,7 @@ function Artist(props) {
           console.error(err);
         });
     }
-  }, [artistData, artistId, props.authCode, topTracksData]);
+  }, [artistData, props.artistId, props.authCode, topTracksData]);
 
   const block = () => {
     if (artistData) {
@@ -154,7 +155,8 @@ Artist.propTypes = {
   redirectToAuthPage: PropTypes.func,
   authCode: PropTypes.string,
   name: PropTypes.string,
-  setName: PropTypes.func
+  setName: PropTypes.func,
+  artistId: PropTypes.string
 };
 
 export default Artist;

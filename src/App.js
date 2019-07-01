@@ -93,6 +93,7 @@ function App(props) {
       if (props.match.path === "/track/:id") {
         block = (
           <Track
+            trackId={props.match.params.id}
             authCode={authCode}
             name={name}
             setName={setName}
@@ -102,6 +103,7 @@ function App(props) {
       } else if (props.match.path === "/album/:id") {
         block = (
           <Album
+            albumId={props.match.params.id}
             authCode={authCode}
             name={name}
             setName={setName}
@@ -111,6 +113,7 @@ function App(props) {
       } else if (props.match.path === "/artist/:id") {
         block = (
           <Artist
+            artistId={props.match.params.id}
             authCode={authCode}
             name={name}
             setName={setName}

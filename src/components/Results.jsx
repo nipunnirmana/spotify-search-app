@@ -70,10 +70,11 @@ function Results(props) {
                     <Col lg={10} md={12}>
                       <a
                         target="_blank"
+                        rel="noopener noreferrer"
                         href={track.external_urls.spotify}
                         className="open-in-spotify"
                       >
-                        <img src={SpotifyIcon} />
+                        <img alt="Spotify" src={SpotifyIcon} />
                         Open in Spotify
                       </a>
                     </Col>

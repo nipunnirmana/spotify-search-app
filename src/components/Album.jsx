@@ -9,7 +9,6 @@ import SpotifyIcon from "../assests/icons/spotify.svg";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
 
 function Album(props) {
-  const albumId = window.location.pathname.split("/album/")[1];
   const [albumData, setAlbumData] = useState();
   const [imgUrl, setImgUrl] = useState(EmptyAlbumCover);
 
@@ -19,7 +18,7 @@ function Album(props) {
      */
     if (!albumData) {
       axios
-        .get(`https://api.spotify.com/v1/albums/${albumId}`, {
+        .get(`https://api.spotify.com/v1/albums/${props.albumId}`, {
           headers: { Authorization: `Bearer ${props.authCode}` }
         })
         .then(response => {
@@ -139,7 +138,8 @@ Album.propTypes = {
   redirectToAuthPage: PropTypes.func,
   authCode: PropTypes.string,
   name: PropTypes.string,
-  setName: PropTypes.func
+  setName: PropTypes.func,
+  albumId: PropTypes.string
 };
 
 export default Album;

@@ -9,8 +9,6 @@ import SpotifyIcon from "../assests/icons/spotify.svg";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
 
 function Track(props) {
-  const trackId = window.location.pathname.split("/track/")[1];
-
   const [trackData, setTrackData] = useState();
   const [imgUrl, setImgUrl] = useState(EmptyAlbumCover);
 
@@ -21,7 +19,7 @@ function Track(props) {
 
     if (!trackData) {
       axios
-        .get(`https://api.spotify.com/v1/tracks/${trackId}`, {
+        .get(`https://api.spotify.com/v1/tracks/${props.trackId}`, {
           headers: { Authorization: `Bearer ${props.authCode}` }
         })
         .then(response => {
@@ -75,8 +73,9 @@ function Track(props) {
                 target="_blank"
                 href={trackData.external_urls.spotify}
                 className="open-in-spotify"
+                rel="noopener noreferrer"
               >
-                <img src={SpotifyIcon} />
+                <img alt="Spotify" src={SpotifyIcon} />
                 Open in Spotify
               </a>
             </Col>
@@ -116,7 +115,8 @@ Track.propTypes = {
   redirectToAuthPage: PropTypes.func,
   authCode: PropTypes.string,
   name: PropTypes.string,
-  setName: PropTypes.func
+  setName: PropTypes.func,
+  trackId: PropTypes.string
 };
 
 export default Track;
