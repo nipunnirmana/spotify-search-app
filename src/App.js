@@ -86,6 +86,7 @@ function App(props) {
   };
 
   const container = () => {
+    debugger;
     let block;
 
     if (authCode) {
@@ -117,6 +118,7 @@ function App(props) {
           />
         );
       } else {
+        debugger;
         block = (
           <Search
             authCode={authCode}

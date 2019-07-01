@@ -40,7 +40,7 @@ function Results(props) {
             <Col key={track.id} lg={12} className="results-track">
               <Row>
                 <Col lg={2}>
-                  <Link to={`/album/${track.album.id}`}>
+                  <Link to={`/track/${track.id}`}>
                     <span
                       className="results-track-cover"
                       style={{ backgroundImage: `url(${imgUrl})` }}
@@ -58,6 +58,12 @@ function Results(props) {
                     <Col lg={12} className="track-artists">
                       <span>Artist : </span>
                       {artists}
+                    </Col>
+                    <Col lg={12} className="track-artists">
+                      <span>Album : </span>
+                      <Link to={`/album/${track.album.id}`}>
+                        {track.album.name}
+                      </Link>
                     </Col>
                   </Row>
                 </Col>

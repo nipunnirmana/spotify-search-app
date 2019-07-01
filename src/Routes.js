@@ -1,6 +1,7 @@
 import React from "react";
 import App from "./App";
-import { Route, BrowserRouter as Router } from "react-router-dom";
+import Oops from "./components/Oops";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 
 /**
  * Routes for Router
@@ -8,12 +9,13 @@ import { Route, BrowserRouter as Router } from "react-router-dom";
 
 const routing = (
   <Router>
-    <div>
+    <Switch>
       <Route exact path="/" component={App} />
       <Route exact path="/track/:id" component={App} />
       <Route exact path="/album/:id" component={App} />
       <Route exact path="/artist/:id" component={App} />
-    </div>
+      <Route component={Oops} />
+    </Switch>
   </Router>
 );
 

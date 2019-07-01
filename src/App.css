@@ -30,7 +30,8 @@ a {
   text-decoration: none;
 }
 
-.login-text {
+.login-text,
+.oops-text {
   color: #ffffff;
   font-size: 40px;
   font-weight: 300;
@@ -124,6 +125,10 @@ a {
   margin-right: 10px;
 }
 
+.oops-wrapper {
+  cursor: pointer;
+}
+
 button.btn.btn-primary {
   background: none;
   border: none;
@@ -190,6 +195,9 @@ button.btn.btn-primary {
     height: 70px;
     font-size: 40px;
     margin: 40px 0;
+  }
+  .oops-text {
+    font-size: 30px;
   }
 }
 
