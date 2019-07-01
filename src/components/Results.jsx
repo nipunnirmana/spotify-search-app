@@ -52,7 +52,8 @@ function Results(props) {
                 <Col lg={10}>
                   <Row>
                     <Col lg={10} md={12}>
-                      Track :<Link to={`/track/${track.id}`}>{track.name}</Link>
+                      Track :{" "}
+                      <Link to={`/track/${track.id}`}>{track.name}</Link>
                     </Col>
                     <Col lg={2} md={12} className="text-right results-duration">
                       <span>{duration}</span>
