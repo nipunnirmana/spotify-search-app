@@ -36,7 +36,7 @@ On any event Auth Token is invalidated user will be Redirects back to Authenicat
 | ------ | ------ |
 | Endpoint | https://api.spotify.com/v1/search |
 | HTTP Method | GET |
-| Params | OAuth:require , q:required , type:required  |
+| Params | OAuth:required , q:required , type:required  |
 
 ##### Request (Artist , Album , Track) Data
 
@@ -46,7 +46,7 @@ On any event Auth Token is invalidated user will be Redirects back to Authenicat
 | Endpoint - Album | 	https://api.spotify.com/v1/albums/{id} |
 | Endpoint - Track | 	https://api.spotify.com/v1/tracks/{id} |
 | HTTP Method | GET |
-| Params | OAuth:require , id:required  |
+| Params | OAuth:required , id:required  |
 
 ##### Get Artists top tracks by Artist ID 
 
@@ -54,7 +54,7 @@ On any event Auth Token is invalidated user will be Redirects back to Authenicat
 | ------ | ------ |
 | Endpoint | 		https://api.spotify.com/v1/artists/{id}/top-tracks |
 | HTTP Method | GET |
-| Params | OAuth:require , id:required  |
+| Params | OAuth:required , id:required  |
 
 ### Installation
 
@@ -71,7 +71,7 @@ $ npm run
 - User will be requested to Login & Authorized Access 
 - Search by Tracks , Albums and Artists
 - Clicking on Track name , artist name or album art will redirect to relavent pages
-- User will be able to go back to the search page by cliking/tapping 
+- User will be able to go back to the search page by cliking/tapping "BACK TO SEARCH" 
 
 
 
