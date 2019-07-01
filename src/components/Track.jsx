@@ -8,7 +8,6 @@ import SpotifyIcon from "../assests/icons/spotify.svg";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
 
 function Track(props) {
-  debugger;
   const trackId = window.location.pathname.split("/track/")[1];
 
   const [trackData, setTrackData] = useState();
