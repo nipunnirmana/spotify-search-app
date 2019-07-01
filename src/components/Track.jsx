@@ -89,6 +89,7 @@ function Track(props) {
     <Row>
       <Col lg={12} className="text-right">
         <Header
+          history={props.history}
           name={props.name}
           setName={props.setName}
           authCode={props.authCode}
@@ -116,7 +117,8 @@ Track.propTypes = {
   authCode: PropTypes.string,
   name: PropTypes.string,
   setName: PropTypes.func,
-  trackId: PropTypes.string
+  trackId: PropTypes.string,
+  history: PropTypes.object
 };
 
 export default Track;

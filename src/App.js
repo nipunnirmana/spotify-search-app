@@ -93,6 +93,7 @@ function App(props) {
       if (props.match.path === "/track/:id") {
         block = (
           <Track
+            history={props.history}
             trackId={props.match.params.id}
             authCode={authCode}
             name={name}
@@ -103,6 +104,7 @@ function App(props) {
       } else if (props.match.path === "/album/:id") {
         block = (
           <Album
+            history={props.history}
             albumId={props.match.params.id}
             authCode={authCode}
             name={name}
@@ -113,6 +115,7 @@ function App(props) {
       } else if (props.match.path === "/artist/:id") {
         block = (
           <Artist
+            history={props.history}
             artistId={props.match.params.id}
             authCode={authCode}
             name={name}
@@ -123,6 +126,7 @@ function App(props) {
       } else {
         block = (
           <Search
+            history={props.history}
             authCode={authCode}
             name={name}
             setName={setName}
@@ -153,7 +157,8 @@ function App(props) {
 }
 
 App.propTypes = {
-  match: PropTypes.object
+  match: PropTypes.object,
+  history: PropTypes.object
 };
 
 export default App;

@@ -123,6 +123,7 @@ function Artist(props) {
     <Row>
       <Col lg={12} className="text-right">
         <Header
+          history={props.history}
           name={props.name}
           setName={props.setName}
           authCode={props.authCode}
@@ -156,7 +157,8 @@ Artist.propTypes = {
   authCode: PropTypes.string,
   name: PropTypes.string,
   setName: PropTypes.func,
-  artistId: PropTypes.string
+  artistId: PropTypes.string,
+  history: PropTypes.object
 };
 
 export default Artist;

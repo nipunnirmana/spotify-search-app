@@ -11,6 +11,7 @@ function Search(props) {
     <Row>
       <Col lg={12} className="text-right">
         <Header
+          history={props.history}
           name={props.name}
           setName={props.setName}
           authCode={props.authCode}
@@ -44,7 +45,8 @@ Search.propTypes = {
   setName: PropTypes.func,
   doSearch: PropTypes.func,
   results: PropTypes.object,
-  search: PropTypes.string
+  search: PropTypes.string,
+  history: PropTypes.object
 };
 
 export default Search;
