@@ -70,6 +70,16 @@ function Track(props) {
             <Col lg={12} className="track-artists p-0">
               {artists}
             </Col>
+            <Col lg={12} className="open-in-spotify p-0">
+              <a
+                target="_blank"
+                href={trackData.external_urls.spotify}
+                className="open-in-spotify"
+              >
+                <img src={SpotifyIcon} />
+                Open in Spotify
+              </a>
+            </Col>
           </Col>
         </Row>
       );

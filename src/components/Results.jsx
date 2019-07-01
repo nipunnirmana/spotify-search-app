@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import EmptyAlbumCover from "../assests/images/empty_album.png";
+import SpotifyIcon from "../assests/icons/spotify.svg";
 
 function Results(props) {
   const block = () => {
@@ -51,7 +52,7 @@ function Results(props) {
                 <Col lg={10}>
                   <Row>
                     <Col lg={10} md={12}>
-                      <Link to={`/track/${track.id}`}>{track.name}</Link>
+                      Track :<Link to={`/track/${track.id}`}>{track.name}</Link>
                     </Col>
                     <Col lg={2} md={12} className="text-right results-duration">
                       <span>{duration}</span>
@@ -65,6 +66,16 @@ function Results(props) {
                       <Link to={`/album/${track.album.id}`}>
                         {track.album.name}
                       </Link>
+                    </Col>
+                    <Col lg={10} md={12}>
+                      <a
+                        target="_blank"
+                        href={track.external_urls.spotify}
+                        className="open-in-spotify"
+                      >
+                        <img src={SpotifyIcon} />
+                        Open in Spotify
+                      </a>
                     </Col>
                   </Row>
                 </Col>
