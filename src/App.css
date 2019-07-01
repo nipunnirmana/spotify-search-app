@@ -219,6 +219,10 @@ button.btn.btn-primary {
     padding-top: 50px;
   }
 
+  .sign-out {
+    width: 36px;
+  }
+
   .search-spotify {
     padding: 0 10px;
     font-size: 18px;
