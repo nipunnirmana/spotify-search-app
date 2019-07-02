@@ -14,12 +14,13 @@ a {
   cursor: pointer;
 }
 
-.logo {
-  width: 120px;
+.test.row {
+  background: #2b2b2b;
+  padding: 20px 0;
 }
 
-hr {
-  background-color: #00ff6b;
+.logo {
+  width: 120px;
 }
 
 .logo-search {
@@ -117,7 +118,8 @@ hr {
 }
 
 .results-track {
-  line-height: 34px;
+  line-height: 31px;
+  margin-bottom: 50px;
 }
 
 .track-album {

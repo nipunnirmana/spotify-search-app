@@ -79,9 +79,6 @@ function Results(props) {
                         Open in Spotify
                       </a>
                     </Col>
-                    <Col lg={12}>
-                      <hr className="d-none d-lg-block d-xl-block" />
-                    </Col>
                   </Row>
                 </Col>
               </Row>
