@@ -6,6 +6,10 @@ body {
   color: #ffffff;
 }
 
+.container {
+  padding-bottom: 50px;
+}
+
 a {
   cursor: pointer;
 }
