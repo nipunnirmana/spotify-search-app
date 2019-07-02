@@ -26,6 +26,7 @@ function Track(props) {
           setTrackData(response.data);
         })
         .catch(err => {
+          props.history.push("/404");
           console.error(err);
         });
     }

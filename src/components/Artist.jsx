@@ -26,6 +26,7 @@ function Artist(props) {
           setArtistData(response.data);
         })
         .catch(err => {
+          props.history.push("/404");
           console.error(err);
         });
     }
@@ -53,7 +54,13 @@ function Artist(props) {
           console.error(err);
         });
     }
-  }, [artistData, props.artistId, props.authCode, topTracksData]);
+  }, [
+    artistData,
+    props.artistId,
+    props.authCode,
+    props.history,
+    topTracksData
+  ]);
 
   const block = () => {
     if (artistData) {

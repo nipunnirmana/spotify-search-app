@@ -19,7 +19,7 @@ a {
 }
 
 .sign-out {
-  width: 50px;
+  width: 30px;
   vertical-align: middle;
   margin-left: 10px;
   cursor: pointer;
@@ -192,7 +192,9 @@ button.btn.btn-primary {
   }
 
   .results-duration {
-    text-align: left !important;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 
   .results-track {
@@ -214,6 +216,10 @@ button.btn.btn-primary {
 }
 
 @media only screen and (max-width: 768px) {
+  .container {
+    padding: 30px;
+  }
+
   .results-empty {
     font-size: 30px;
     padding-top: 50px;
@@ -234,7 +240,7 @@ button.btn.btn-primary {
   }
 
   .header-user {
-    font-size: 18px;
+    font-size: 30px;
   }
 
   .back-to-search {

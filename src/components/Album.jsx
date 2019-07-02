@@ -25,6 +25,7 @@ function Album(props) {
           setAlbumData(response.data);
         })
         .catch(err => {
+          props.history.push("/404");
           console.error(err);
         });
     }
