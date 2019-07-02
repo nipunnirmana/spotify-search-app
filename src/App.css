@@ -18,6 +18,10 @@ a {
   width: 120px;
 }
 
+hr {
+  background-color: #00ff6b;
+}
+
 .logo-search {
   width: 60px;
 }
